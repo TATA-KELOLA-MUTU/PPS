@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard PPS - Portal Informasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#F4F2EC',
+                        'brand-dark': '#173C2C',
+                        'brand-accent': '#B85541',
+                        'card-green': '#DBE4D9',
+                        'card-tan': '#DFCEBB',
+                        'text-muted': '#5c6758'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F4F2EC;
+            color: #173C2C;
+        }
+        
+        /* Subtle grid background pattern */
+        .bg-grid-pattern {
+            background-size: 60px 60px;
+            background-image:
+                linear-gradient(to right, rgba(23, 60, 44, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(23, 60, 44, 0.04) 1px, transparent 1px);
+        }
+
+        /* Subtle floral/leaf background for the bottom section */
+        .bg-pattern-bottom {
+            position: relative;
+        }
+        .bg-pattern-bottom::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNHYtNGgtMnY0aC00djJoNHY0aDJ2LTRoNHYtMmgtNHptMC0zMFYwaC0ydjRoLTR2Mmg0djRoMnYtNGg0VjRoLTR6bS0yMCAyMHYtNGgtMnY0aC00djJoNHY0aDJ2LTRoNHYtMmgtNHoiIGZpbGw9IiMxNzNDMkMiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvZz48L3N2Zz4=');
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        /* Smooth scroll for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hover transitions */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(23, 60, 44, 0.15);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased bg-grid-pattern relative flex flex-col">
+
+    <main class="flex-grow">
+        <section class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 lg:flex lg:justify-between lg:items-start gap-12">
+            
+            <!-- Left Text Content -->
+            <div class="lg:w-1/2 relative z-10">
+                <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight tracking-tight text-brand-dark mb-6">
+                    Satu ruang untuk data yang <span class="text-brand-accent italic font-semibold">siap dipakai.</span>
+                </h1>
+                
+                <p class="text-text-muted text-lg leading-relaxed mb-10 max-w-md">
+                    Akses PPS, unduh master referensi, dan siapkan alur kerja layanan kesehatan dalam satu tempat yang tertib.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-12">
+                    <a href="https://share.gemini.google/hGorxKPntgWN" target="_blank" rel="noopener noreferrer" 
+                       class="bg-brand-dark text-white px-6 py-4 flex items-center gap-3 text-sm font-medium btn-hover">
+                        Buka Aplikasi PPS
+                        <i class="fa-solid fa-arrow-right text-xs opacity-70"></i>
+                    </a>
+                    
+                    <a href="#master-data" class="text-brand-dark font-medium text-sm hover:text-brand-accent transition-colors flex items-center gap-2">
+                        Lihat master data
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-2 text-xs text-text-muted">
+                    <span class="relative flex h-2.5 w-2.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                    </span>
+                    Akses aktif · Siap digunakan
+                </div>
+            </div>
+
+            <!-- Right Graphic Content -->
+            <div class="lg:w-1/2 mt-16 lg:mt-0 relative">
+                <!-- Main Image Wrapper -->
+                <div class="relative w-full aspect-[4/3] bg-gray-200 overflow-hidden shadow-xl">
+                    <!-- Using a relevant healthcare/nature placeholder to mimic the vibe -->
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Healthcare illustration" 
+                         class="object-cover w-full h-full mix-blend-multiply opacity-80"
+                         style="filter: sepia(0.3) hue-rotate(-30deg) saturate(0.8);">
+                    
+                    <!-- Decorative overlay gradient to soften -->
+                    <div class="absolute inset-0 bg-brand-bg opacity-20"></div>
+                </div>
+
+                <!-- Overlapping Terracotta Box -->
+                <div class="absolute -bottom-10 -left-6 md:-left-12 bg-brand-accent text-white p-6 md:p-8 w-48 md:w-56 shadow-lg z-20">
+                    <h2 class="font-serif text-3xl md:text-4xl mb-2">01</h2>
+                    <p class="font-bold text-sm tracking-wider uppercase mb-8">Data<br>Tertib</p>
+                    <p class="text-[10px] tracking-widest uppercase opacity-80">Publik Health / 2026</p>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- Sub-section indicator line -->
+        <div class="max-w-6xl mx-auto px-6 py-8 border-b border-gray-300 flex justify-between items-end text-xs">
+            <div class="flex gap-4">
+                <span class="font-bold text-brand-accent">01</span>
+                <span><strong class="text-brand-dark">Mulai dari sini</strong> <span class="text-text-muted ml-2">Pusat akses kerja PPS untuk pengelola puskesmas dan klinik.</span></span>
+            </div>
+            <div class="hidden md:flex items-center gap-2 font-bold tracking-widest uppercase text-brand-dark">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                Sistem Terhubung
+            </div>
+        </div>
+
+        <!-- Master Data Section -->
+        <section id="master-data" class="bg-pattern-bottom pt-20 pb-24 border-t border-white/50">
+            <div class="max-w-6xl mx-auto px-6">
+                
+                <!-- Section Header -->
+                <div class="mb-16">
+                    <p class="text-brand-accent font-bold tracking-widest text-xs uppercase mb-4">02 / Master Data</p>
+                    <h2 class="font-serif text-5xl md:text-6xl font-bold text-brand-dark leading-tight mb-6">
+                        Referensi yang <br><span class="text-brand-accent italic">menjaga ritme.</span>
+                    </h2>
+                    <p class="text-text-muted max-w-xl text-sm leading-relaxed">
+                        Gunakan file master sebagai acuan pengisian dan pemutakhiran data. Kedua workbook tersedia untuk diunduh dan siap dipakai.
+                    </p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
+                    
+                    <!-- Card 1: Puskesmas -->
+                    <div class="bg-card-green p-8 md:p-10 relative flex flex-col h-full min-h-[320px] card-hover group">
+                        <div class="flex justify-between items-start mb-12">
+                            <div class="w-10 h-10 border border-brand-dark flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-brand-dark">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <rect x="8" y="12" width="8" height="6"></rect>
+                                    <path d="M8 15h8"></path>
+                                    <path d="M12 12v6"></path>
+                                </svg>
+                            </div>
+                            <span class="text-[10px] font-bold tracking-widest text-brand-dark uppercase">XLSX / Master</span>
+                        </div>
+                        
+                        <div class="mb-auto">
+                            <h3 class="font-serif text-3xl font-bold text-brand-dark mb-4">Master<br>Puskesmas</h3>
+                            <p class="text-text-muted text-sm max-w-[80%]">
+                                Daftar referensi puskesmas untuk kebutuhan pemetaan dan administrasi PPS.
+                            </p>
+                        </div>
+
+                        <!-- Bottom row of card -->
+                        <div class="mt-8 flex justify-between items-end">
+                            <p class="text-[10px] text-text-muted">Siap diunduh</p>
+                            
+                            <!-- Download Button mimicking the lock box -->
+                            <a href="MASTER%20PUSKESMAS.xlsx" download="MASTER PUSKESMAS.xlsx" 
+                               class="w-12 h-12 bg-[#6b7b6f] hover:bg-brand-dark text-white flex items-center justify-center transition-colors"
+                               title="Unduh Master Puskesmas">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Klinik -->
+                    <div class="bg-card-tan p-8 md:p-10 relative flex flex-col h-full min-h-[320px] card-hover group">
+                        <div class="flex justify-between items-start mb-12">
+                            <div class="w-10 h-10 border border-brand-dark flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-brand-dark">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <rect x="8" y="12" width="8" height="6"></rect>
+                                    <path d="M8 15h8"></path>
+                                    <path d="M12 12v6"></path>
+                                </svg>
+                            </div>
+                            <span class="text-[10px] font-bold tracking-widest text-brand-dark uppercase">XLSX / Master</span>
+                        </div>
+                        
+                        <div class="mb-auto">
+                            <h3 class="font-serif text-3xl font-bold text-brand-dark mb-4">Master<br>Klinik</h3>
+                            <p class="text-text-muted text-sm max-w-[80%]">
+                                Daftar referensi klinik sebagai dasar pengelolaan entitas layanan kesehatan.
+                            </p>
+                        </div>
+
+                        <!-- Bottom row of card -->
+                        <div class="mt-8 flex justify-between items-end">
+                            <p class="text-[10px] text-text-muted">Siap diunduh</p>
+                            
+                            <!-- Download Button mimicking the lock box -->
+                            <a href="MASTER%20KLINIK.xlsx" download="MASTER KLINIK.xlsx" 
+                               class="w-12 h-12 bg-[#827a70] hover:bg-brand-dark text-white flex items-center justify-center transition-colors"
+                               title="Unduh Master Klinik">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-8 text-xs text-text-muted border-t border-gray-300">
+        <p>&copy; 2026 Portal Data Terpadu. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
